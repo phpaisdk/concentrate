@@ -1,6 +1,6 @@
-# aisdk/concentrate
+# PHP AI SDK — Concentrate
 
-Official Concentrate AI provider for the PHP AI SDK. It uses Concentrate's OpenAI-compatible Chat Completions API to access models from multiple providers through one endpoint.
+Text generation, streaming, and tool calling through Concentrate AI. Part of the framework-agnostic [PHP AI SDK](https://phpaisdk.com).
 
 ## Installation
 
@@ -8,49 +8,27 @@ Official Concentrate AI provider for the PHP AI SDK. It uses Concentrate's OpenA
 composer require aisdk/concentrate
 ```
 
-## Basic Usage
+Set `CONCENTRATE_API_KEY` in your environment.
+
+## Usage
 
 ```php
 use AiSdk\Concentrate;
 use AiSdk\Generate;
 
-$result = Generate::text('Explain closures in PHP.')
-    ->model(Concentrate::model('claude-opus-4-8'))
+$result = Generate::text('Explain closures in PHP in one sentence.')
+    ->model(Concentrate::model('claude-sonnet-5-5'))
     ->run();
 
 echo $result->text;
 ```
 
-## Configuration
+## Documentation
 
-| Variable | Description | Default |
-|---|---|---|
-| `CONCENTRATE_API_KEY` | API key for authentication | Required |
-| `CONCENTRATE_BASE_URL` | Base URL for API requests | `https://api.concentrate.ai/v1` |
+[Read the documentation](https://phpaisdk.com/docs/0.x/providers/concentrate) for configuration, supported features, and more examples.
 
-```php
-Concentrate::create([
-    'apiKey' => 'sk-cn-...',
-    'headers' => ['X-Custom-Header' => 'value'],
-]);
-```
+[Contributing](https://github.com/phpaisdk/.github/blob/main/CONTRIBUTING.md) · [Support](https://github.com/phpaisdk/.github/blob/main/SUPPORT.md)
 
-## Supported Capabilities
+## License
 
-| Capability | Support |
-|---|---|
-| Text generation | Native |
-| Streaming | Native |
-| Tool calling | Native |
-| Reasoning | Native |
-| Structured output | Native |
-| Text input | Native |
-| Image input | Native where supported by the selected model |
-
-Model IDs are opaque strings. The package does not maintain a model catalog; Concentrate remains the authority on model availability and capability support.
-
-## Testing
-
-```bash
-composer test:all
-```
+The MIT License (MIT). See [LICENSE](LICENSE) for details.
